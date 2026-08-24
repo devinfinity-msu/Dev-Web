@@ -1,16 +1,30 @@
-# React + Vite
+# Dev Infinity Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Official frontend web application for the **Dev Infinity Web Development Club** (Department of CSE, FTE, MSU Baroda).
 
-Currently, two official plugins are available:
+## 🚀 Quick Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+# Navigate to frontend folder
+cd frontend
 
-## React Compiler
+# Install dependencies
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Run development server
+npm run dev
 
-## Expanding the Oxlint configuration
+# Production build test
+npm run build
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 📁 Component Directory Guidelines for Web Team
+
+- `src/components/common/`: Shared generic UI elements (`Button`, `Card`, `Badge`, `Modal`, `SectionTitle`, `Logo`, `Loader`, `EmptyState`).
+- `src/components/layout/`: Global navigation bars (`Navbar`, `Footer`, `PageContainer`, `AdminLayout`, `AdminSidebar`, `AdminHeader`).
+- `src/components/[feature]/`: Modular section components for `home`, `events`, `projects`, `blog`, `learning`, `achievements`, `team`, `contact`, `admin`.
+- `src/data/mockData.js`: Centralized mock data structure designed for straightforward future connection to REST APIs (Node.js/Express + Supabase).
+
+## 🎨 Design Tokens
+
+Style variables are located in `src/styles/variables.css` & `src/styles/globals.css`.
