@@ -167,6 +167,7 @@ export const events = [
 export const projects = [
   {
     id: "proj-1",
+    featured: true,
     title: "MSU Student Resource Portal",
     description: "A centralized platform for CSE students to access lecture notes, past exam papers, and workshop code repositories.",
     category: "Full-Stack",
@@ -174,7 +175,17 @@ export const projects = [
     techStack: ["React", "Node.js", "Express", "MongoDB"],
     contributors: ["Dev Infinity Web Team", "Siddharth V."],
     githubUrl: "https://github.com/devinfinity-msu/student-portal",
-    demoUrl: "https://student-portal.devinfinity.in"
+    demoUrl: "https://student-portal.devinfinity.in",
+    status: "Completed",
+    longDescription: "The MSU Student Resource Portal is a centralized academic hub designed to streamline how CSE students access and share lecture notes, past examination papers, code repositories from workshops, and curated study materials. The platform features role-based access so faculty can upload official resources while students contribute community-driven content such as solved assignments and project templates.",
+    features: [
+      "Semester-wise categorized lecture notes and study material",
+      "Searchable repository of past exam papers with solutions",
+      "Workshop code repository linked to Dev Infinity sessions",
+      "Role-based access control for students and faculty"
+    ],
+    challenge: "CSE students at MSU lacked a single reliable source for academic resources, often relying on scattered WhatsApp groups and personal drives. This led to fragmented, outdated, and hard-to-find materials — especially for juniors unfamiliar with the department's workflow.",
+    solution: "The team built a full-stack MERN application with a clean folder hierarchy mirroring the university semester structure. An Express REST API handles authentication and CRUD operations, while MongoDB stores metadata and file references. React on the frontend provides instant search, filtering by semester and subject, and a responsive card-based UI that works well on both desktop and mobile devices."
   },
   {
     id: "proj-2",
@@ -185,7 +196,17 @@ export const projects = [
     techStack: ["React 18", "Vite", "Vanilla CSS", "React Router"],
     contributors: ["Web Team Leads"],
     githubUrl: "https://github.com/devinfinity-msu/Dev-Web",
-    demoUrl: "https://devinfinity-msu.github.io/Dev-Web"
+    demoUrl: "https://devinfinity-msu.github.io/Dev-Web",
+    status: "In Progress",
+    longDescription: "The official Dev Infinity website serves as the digital identity of MSU Baroda's premier web development club. Built with React 19 and Vite for blazing-fast performance, it showcases events, projects, blogs, achievements, and team information through a dark-themed, glassmorphic interface that reflects the club's modern engineering standards.",
+    features: [
+      "Dark-themed glassmorphic UI with responsive design across all devices",
+      "Dynamic event listings with live-event banner and registration links",
+      "Interactive project showcase with search and category filtering",
+      "Modular component architecture designed for easy contributor onboarding"
+    ],
+    challenge: "Dev Infinity needed a professional web presence that not only displayed club information but also served as a living portfolio of the team's frontend capabilities. The site had to be maintainable by rotating student teams each academic year without relying on heavy frameworks or paid services.",
+    solution: "The team chose React with Vite for fast iteration and zero-cost static hosting on GitHub Pages. A modular component architecture with vanilla CSS ensures that incoming contributors can understand and extend the codebase without learning additional styling frameworks. Mock data layers are designed for seamless migration to a real backend when ready."
   },
   {
     id: "proj-3",
@@ -196,7 +217,17 @@ export const projects = [
     techStack: ["React", "Express", "Supabase", "Tailwind CSS"],
     contributors: ["Aarav Patel", "Neha Joshi"],
     githubUrl: "https://github.com/devinfinity-msu/uni-events",
-    demoUrl: "https://unievents.demo.com"
+    demoUrl: "https://unievents.demo.com",
+    status: "Beta",
+    longDescription: "UniEvents is a real-time event booking system built for university departments to manage event creation, seat reservations, and attendee check-ins. The platform supports ticketing for seminars, hackathons, and cultural events, with Supabase real-time subscriptions providing instant seat availability updates to prevent overbooking.",
+    features: [
+      "Real-time seat availability with Supabase subscriptions",
+      "QR-code-based digital ticket generation and check-in",
+      "Admin dashboard for event creation, analytics, and attendee management",
+      "Email confirmation and reminder notifications via webhooks"
+    ],
+    challenge: "University events were managed through manual Google Forms with no seat limits, leading to frequent overbooking, no-shows without notification, and zero visibility into actual attendance. Organizers needed a system that could handle concurrent registrations reliably.",
+    solution: "The team leveraged Supabase's real-time capabilities to broadcast seat count changes instantly to all connected clients. An Express middleware validates registration requests against remaining capacity before confirming bookings. The React frontend displays live counters and generates unique QR-code tickets that can be scanned at the venue for fast check-in."
   },
   {
     id: "proj-4",
@@ -207,7 +238,17 @@ export const projects = [
     techStack: ["React", "Canvas API", "CSS Grid"],
     contributors: ["Karan Shah"],
     githubUrl: "https://github.com/devinfinity-msu/algo-visualizer",
-    demoUrl: "https://algo.devinfinity.in"
+    demoUrl: "https://algo.devinfinity.in",
+    status: "Completed",
+    longDescription: "The Algorithm Visualizer is an interactive educational tool that renders sorting algorithms, graph traversals, and pathfinding techniques as animated visualizations on an HTML5 Canvas. Students can adjust array sizes, animation speed, and obstacle placements to observe how algorithms behave under different conditions — making abstract DSA concepts tangible and intuitive.",
+    features: [
+      "Animated step-by-step visualization of 8+ sorting algorithms",
+      "Interactive grid for pathfinding with draggable start/end nodes and walls",
+      "Adjustable speed controls and array-size sliders for experimentation",
+      "Side-by-side comparison mode to benchmark two algorithms simultaneously"
+    ],
+    challenge: "Second-year CSE students often struggle to internalize sorting and graph algorithm behavior from textbook pseudocode alone. Static diagrams fail to convey the dynamic, step-by-step nature of operations like partitioning in QuickSort or frontier expansion in A*.",
+    solution: "Using the Canvas API for high-performance rendering, the visualizer draws each algorithmic step as an animation frame, color-coding comparisons, swaps, and visited nodes. React state manages algorithm selection and control parameters while requestAnimationFrame ensures smooth 60fps playback even for large datasets. CSS Grid handles responsive layout so the tool works equally well on lab desktops and personal laptops."
   }
 ];
 

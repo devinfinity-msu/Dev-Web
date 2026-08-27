@@ -4,7 +4,7 @@ export const ProjectFilters = ({ activeFilter, onFilterChange }) => {
   const categories = ['All', 'Frontend', 'Backend', 'Full-Stack', 'UI/UX'];
 
   return (
-    <div className="filter-bar">
+    <>
       {categories.map((cat) => (
         <button
           key={cat}
@@ -14,6 +14,6 @@ export const ProjectFilters = ({ activeFilter, onFilterChange }) => {
           {cat}
         </button>
       ))}
-    </div>
+    </>
   );
 };
