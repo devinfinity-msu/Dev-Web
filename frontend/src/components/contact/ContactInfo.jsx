@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, MapPin, GraduationCap } from 'lucide-react';
 import { Card } from '../common/Card';
-import { GithubIcon, LinkedinIcon } from '../common/Icons';
+import { GithubIcon, LinkedinIcon, InstagramIcon } from '../common/Icons';
 import { clubInfo } from '../../data/mockData';
 
 export const ContactInfo = () => {
@@ -50,14 +50,18 @@ export const ContactInfo = () => {
         <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-contrast)', marginBottom: '1rem' }}>
           Official Channels & Socials
         </h4>
-        <div style={{ display: 'flex', gap: '0.75rem' }}>
-          <a href={clubInfo.socials.github} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ flex: 1 }}>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <a href={clubInfo.socials.github} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ flex: 1, minWidth: '100px' }}>
             <GithubIcon size={16} />
             <span>GitHub</span>
           </a>
-          <a href={clubInfo.socials.linkedin} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ flex: 1 }}>
+          <a href={clubInfo.socials.linkedin} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ flex: 1, minWidth: '100px' }}>
             <LinkedinIcon size={16} />
             <span>LinkedIn</span>
+          </a>
+          <a href={clubInfo.socials.instagram} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ flex: 1, minWidth: '100px' }}>
+            <InstagramIcon size={16} />
+            <span>Instagram</span>
           </a>
         </div>
       </Card>
