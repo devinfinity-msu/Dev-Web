@@ -1,5 +1,12 @@
 import React from 'react';
-import { Trophy, Calendar, Users } from 'lucide-react';
+
+import {
+  Trophy,
+  Calendar,
+  Users,
+  Sparkles
+} from 'lucide-react';
+
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 
@@ -7,55 +14,85 @@ export const AchievementCard = ({ achievement }) => {
   const isClub = achievement.type.includes('Club');
 
   return (
-    <Card hover className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <div style={{
-        height: '190px',
-        borderRadius: 'var(--radius-sm)',
-        overflow: 'hidden',
-        position: 'relative',
-        marginBottom: '1.25rem',
-        marginInline: '-1.5rem',
-        marginTop: '-1.5rem'
-      }}>
+    <Card
+      hover
+      className={`achievement-card ${
+        isClub
+          ? 'achievement-card-club'
+          : 'achievement-card-member'
+      }`}
+    >
+      {/* Image */}
+      <div className="achievement-card-image">
         <img
           src={achievement.image}
           alt={achievement.title}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem' }}>
+
+        <div className="achievement-image-overlay" />
+
+        {/* Achievement type */}
+        <div className="achievement-card-badge">
           <Badge variant={isClub ? 'success' : 'accent'}>
             <Trophy size={12} />
             <span>{achievement.type}</span>
           </Badge>
         </div>
-      </div>
 
-      <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-contrast)', marginBottom: '0.5rem' }}>
-        {achievement.title}
-      </h3>
-
-      <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', marginBottom: '1.25rem', flex: 1, lineHeight: 1.5 }}>
-        {achievement.description}
-      </p>
-
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.375rem',
-        fontSize: '0.8125rem',
-        color: 'var(--text-muted)',
-        borderTop: '1px solid var(--border-color)',
-        paddingTop: '1rem'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Users size={14} style={{ color: 'var(--secondary)' }} />
-          <span>Members: {achievement.members}</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Calendar size={14} style={{ color: 'var(--primary)' }} />
-          <span>Accomplished: {achievement.date}</span>
+        {/* Floating sparkle */}
+        <div className="achievement-sparkle">
+          <Sparkles size={15} />
         </div>
       </div>
+
+      {/* Content */}
+      <div className="achievement-card-content">
+
+        <div className="achievement-card-topline">
+          <span>
+            {isClub
+              ? 'CLUB ACHIEVEMENT'
+              : 'MEMBER ACHIEVEMENT'}
+          </span>
+
+          <span className="achievement-card-year">
+            {achievement.date}
+          </span>
+        </div>
+
+        <h3>
+          {achievement.title}
+        </h3>
+
+        <p>
+          {achievement.description}
+        </p>
+
+        {/* Metadata */}
+        <div className="achievement-card-meta">
+
+          <div className="achievement-meta-item">
+            <Users size={15} />
+            <span>
+              {achievement.members}
+            </span>
+          </div>
+
+          <div className="achievement-meta-item">
+            <Calendar size={15} />
+            <span>
+              {achievement.date}
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Bottom glow */}
+      <div className="achievement-card-glow" />
     </Card>
   );
 };
+
+export default AchievementCard;

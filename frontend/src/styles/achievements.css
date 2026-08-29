@@ -1,0 +1,2658 @@
+/* =========================================================
+   DEV INFINITY
+   ACHIEVEMENTS PAGE
+   OCEAN / INFINITY EXPERIENCE
+========================================================= */
+
+.achievements-page {
+  position: relative;
+  min-height: calc(100vh - 5rem);
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(6, 182, 212, 0.14),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 10% 55%,
+      rgba(59, 130, 246, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(139, 92, 246, 0.08),
+      transparent 30%
+    ),
+    #020817;
+}
+
+
+/* =========================================================
+   BACKGROUND CONTAINER
+========================================================= */
+
+.achievement-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   UNDERWATER GLOW
+========================================================= */
+
+.underwater-glow {
+  position: absolute;
+
+  width: 900px;
+  height: 900px;
+
+  top: -450px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(34, 211, 238, 0.15),
+      rgba(59, 130, 246, 0.07) 35%,
+      transparent 70%
+    );
+
+  filter: blur(25px);
+}
+
+
+/* =========================================================
+   WATER LIGHT RAYS
+========================================================= */
+
+.water-ray {
+  position: absolute;
+
+  top: -180px;
+
+  width: 150px;
+  height: 1000px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(125, 211, 252, 0.12),
+      transparent 75%
+    );
+
+  filter: blur(20px);
+
+  opacity: 0.5;
+
+  transform: rotate(18deg);
+
+  animation:
+    waterRayMove
+    10s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.ray-one {
+  left: 12%;
+}
+
+.ray-two {
+  left: 34%;
+  opacity: 0.28;
+  animation-delay: -3s;
+}
+
+.ray-three {
+  left: 58%;
+  opacity: 0.3;
+  animation-delay: -5s;
+}
+
+.ray-four {
+  right: 10%;
+  opacity: 0.2;
+  animation-delay: -7s;
+}
+
+@keyframes waterRayMove {
+  from {
+    transform:
+      rotate(18deg)
+      translateX(-40px);
+  }
+
+  to {
+    transform:
+      rotate(24deg)
+      translateX(40px);
+  }
+}
+
+
+/* =========================================================
+   LARGE INFINITY
+========================================================= */
+
+.background-infinity {
+  position: absolute;
+
+  top: 2%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: clamp(18rem, 40vw, 38rem);
+
+  line-height: 1;
+  font-weight: 900;
+
+  color: rgba(59, 130, 246, 0.018);
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   BUBBLES
+========================================================= */
+
+.achievement-bubble {
+  position: absolute;
+
+  display: block;
+
+  border:
+    1px solid
+    rgba(125, 211, 252, 0.4);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255, 255, 255, 0.3),
+      rgba(6, 182, 212, 0.04) 45%,
+      transparent 70%
+    );
+
+  box-shadow:
+    inset
+    -4px
+    -4px
+    10px
+    rgba(59, 130, 246, 0.08),
+
+    0 0 20px
+    rgba(6, 182, 212, 0.08);
+
+  animation:
+    bubbleRise
+    14s
+    linear
+    infinite;
+}
+
+.bubble-one {
+  width: 35px;
+  height: 35px;
+  left: 5%;
+  bottom: 5%;
+}
+
+.bubble-two {
+  width: 12px;
+  height: 12px;
+  left: 13%;
+  bottom: 18%;
+  animation-delay: -3s;
+  animation-duration: 9s;
+}
+
+.bubble-three {
+  width: 55px;
+  height: 55px;
+  right: 5%;
+  bottom: 7%;
+  animation-delay: -5s;
+  animation-duration: 18s;
+}
+
+.bubble-four {
+  width: 18px;
+  height: 18px;
+  right: 17%;
+  bottom: 25%;
+  animation-duration: 11s;
+}
+
+.bubble-five {
+  width: 9px;
+  height: 9px;
+  left: 29%;
+  bottom: 9%;
+  animation-duration: 8s;
+}
+
+.bubble-six {
+  width: 28px;
+  height: 28px;
+  right: 30%;
+  bottom: 15%;
+  animation-delay: -4s;
+}
+
+.bubble-seven {
+  width: 14px;
+  height: 14px;
+  left: 72%;
+  top: 43%;
+  animation-duration: 10s;
+}
+
+.bubble-eight {
+  width: 42px;
+  height: 42px;
+  left: 2%;
+  top: 22%;
+  animation-duration: 17s;
+}
+
+.bubble-nine {
+  width: 20px;
+  height: 20px;
+  right: 4%;
+  top: 28%;
+  animation-delay: -6s;
+}
+
+.bubble-ten {
+  width: 10px;
+  height: 10px;
+  left: 48%;
+  top: 12%;
+  animation-duration: 7s;
+}
+
+@keyframes bubbleRise {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0, 30px, 0)
+      scale(0.75);
+  }
+
+  15% {
+    opacity: 0.55;
+  }
+
+  50% {
+    transform:
+      translate3d(25px, -280px, 0)
+      scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(-20px, -700px, 0)
+      scale(1.12);
+  }
+}
+
+
+/* =========================================================
+   STARFISH
+========================================================= */
+
+.achievement-starfish {
+  position: absolute;
+
+  width: 85px;
+  height: 85px;
+
+  opacity: 0.18;
+
+  filter:
+    drop-shadow(
+      0 0 16px
+      rgba(6, 182, 212, 0.35)
+    );
+
+  animation:
+    starfishFloat
+    8s
+    ease-in-out
+    infinite;
+}
+
+.achievement-starfish span {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 20px;
+  height: 54px;
+
+  border-radius:
+    60%
+    60%
+    35%
+    35%;
+
+  transform-origin: 50% 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #67e8f9,
+      rgba(37, 99, 235, 0.35)
+    );
+}
+
+.achievement-starfish span:nth-child(1) {
+  transform:
+    translate(-50%, -100%);
+}
+
+.achievement-starfish span:nth-child(2) {
+  transform:
+    translate(-50%, -100%)
+    rotate(72deg);
+}
+
+.achievement-starfish span:nth-child(3) {
+  transform:
+    translate(-50%, -100%)
+    rotate(144deg);
+}
+
+.achievement-starfish span:nth-child(4) {
+  transform:
+    translate(-50%, -100%)
+    rotate(216deg);
+}
+
+.achievement-starfish span:nth-child(5) {
+  transform:
+    translate(-50%, -100%)
+    rotate(288deg);
+}
+
+.starfish-left {
+  left: 3%;
+  top: 18%;
+}
+
+.starfish-right {
+  right: 3%;
+  top: 57%;
+
+  transform:
+    scale(0.7)
+    rotate(-25deg);
+
+  animation-delay: -4s;
+}
+
+@keyframes starfishFloat {
+  0%,
+  100% {
+    margin-top: 0;
+    transform: rotate(15deg);
+  }
+
+  50% {
+    margin-top: -18px;
+    transform: rotate(30deg);
+  }
+}
+
+
+/* =========================================================
+   JELLYFISH
+========================================================= */
+
+.achievement-jellyfish {
+  position: absolute;
+
+  opacity: 0.12;
+
+  filter:
+    drop-shadow(
+      0 0 18px
+      rgba(59, 130, 246, 0.5)
+    );
+
+  animation:
+    jellyfishFloat
+    12s
+    ease-in-out
+    infinite;
+}
+
+.jellyfish-left {
+  left: 5%;
+  top: 43%;
+}
+
+.jellyfish-right {
+  right: 5%;
+  top: 31%;
+
+  transform: scale(0.7);
+
+  animation-delay: -5s;
+}
+
+.jellyfish-head {
+  width: 75px;
+  height: 45px;
+
+  border-radius:
+    50%
+    50%
+    35%
+    35%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(96, 165, 250, 0.8),
+      rgba(6, 182, 212, 0.2)
+    );
+
+  box-shadow:
+    0 0 25px
+    rgba(59, 130, 246, 0.25);
+}
+
+.jellyfish-tentacles {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 12px;
+}
+
+.jellyfish-tentacles span {
+  width: 2px;
+  height: 55px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(34, 211, 238, 0.5);
+
+  animation:
+    tentacleMove
+    2.5s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.jellyfish-tentacles span:nth-child(2) {
+  animation-delay: -0.6s;
+}
+
+.jellyfish-tentacles span:nth-child(3) {
+  animation-delay: -1.2s;
+}
+
+.jellyfish-tentacles span:nth-child(4) {
+  animation-delay: -1.8s;
+}
+
+@keyframes tentacleMove {
+  from {
+    transform: rotate(-9deg);
+  }
+
+  to {
+    transform: rotate(9deg);
+  }
+}
+
+@keyframes jellyfishFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      translate3d(20px, -35px, 0);
+  }
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.underwater-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.underwater-particles span {
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background: #7dd3fc;
+
+  opacity: 0.3;
+
+  animation:
+    particleMove
+    7s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.underwater-particles span:nth-child(1) {
+  left: 5%;
+  top: 25%;
+}
+
+.underwater-particles span:nth-child(2) {
+  left: 12%;
+  top: 60%;
+}
+
+.underwater-particles span:nth-child(3) {
+  left: 20%;
+  top: 35%;
+}
+
+.underwater-particles span:nth-child(4) {
+  left: 28%;
+  top: 75%;
+}
+
+.underwater-particles span:nth-child(5) {
+  left: 35%;
+  top: 20%;
+}
+
+.underwater-particles span:nth-child(6) {
+  left: 42%;
+  top: 55%;
+}
+
+.underwater-particles span:nth-child(7) {
+  left: 50%;
+  top: 85%;
+}
+
+.underwater-particles span:nth-child(8) {
+  left: 58%;
+  top: 25%;
+}
+
+.underwater-particles span:nth-child(9) {
+  left: 65%;
+  top: 68%;
+}
+
+.underwater-particles span:nth-child(10) {
+  left: 72%;
+  top: 40%;
+}
+
+.underwater-particles span:nth-child(11) {
+  left: 80%;
+  top: 78%;
+}
+
+.underwater-particles span:nth-child(12) {
+  left: 88%;
+  top: 30%;
+}
+
+.underwater-particles span:nth-child(13) {
+  left: 94%;
+  top: 65%;
+}
+
+.underwater-particles span:nth-child(14) {
+  left: 16%;
+  top: 88%;
+}
+
+.underwater-particles span:nth-child(15) {
+  left: 46%;
+  top: 45%;
+}
+
+.underwater-particles span:nth-child(16) {
+  left: 76%;
+  top: 15%;
+}
+
+.underwater-particles span:nth-child(17) {
+  left: 90%;
+  top: 90%;
+}
+
+.underwater-particles span:nth-child(18) {
+  left: 32%;
+  top: 50%;
+}
+
+.underwater-particles span:nth-child(19) {
+  left: 62%;
+  top: 90%;
+}
+
+.underwater-particles span:nth-child(20) {
+  left: 8%;
+  top: 12%;
+}
+
+.underwater-particles span:nth-child(21) {
+  left: 24%;
+  top: 10%;
+}
+
+.underwater-particles span:nth-child(22) {
+  left: 54%;
+  top: 35%;
+}
+
+.underwater-particles span:nth-child(23) {
+  left: 82%;
+  top: 52%;
+}
+
+.underwater-particles span:nth-child(24) {
+  left: 68%;
+  top: 82%;
+}
+
+.underwater-particles span:nth-child(25) {
+  left: 38%;
+  top: 90%;
+}
+
+.underwater-particles span:nth-child(26) {
+  left: 14%;
+  top: 42%;
+}
+
+.underwater-particles span:nth-child(27) {
+  left: 92%;
+  top: 45%;
+}
+
+.underwater-particles span:nth-child(28) {
+  left: 44%;
+  top: 12%;
+}
+
+.underwater-particles span:nth-child(29) {
+  left: 74%;
+  top: 62%;
+}
+
+.underwater-particles span:nth-child(30) {
+  left: 2%;
+  top: 78%;
+}
+
+@keyframes particleMove {
+  from {
+    opacity: 0.12;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0.65;
+    transform: translateY(-25px);
+  }
+}
+
+
+/* =========================================================
+   OCEAN FLOOR
+========================================================= */
+
+.ocean-floor-glow {
+  position: absolute;
+
+  left: -10%;
+  right: -10%;
+  bottom: -180px;
+
+  height: 400px;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(6, 182, 212, 0.09),
+      transparent 65%
+    );
+
+  filter: blur(25px);
+}
+
+
+/* =========================================================
+   VIGNETTE
+========================================================= */
+
+.ocean-vignette {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.achievements-content {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      1180px,
+      calc(100% - 40px)
+    );
+
+  margin: 0 auto;
+
+  padding:
+    3rem
+    0
+    4rem;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.achievements-hero {
+  position: relative;
+
+  text-align: center;
+
+  padding-top: 1rem;
+}
+
+.achievement-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.65rem;
+
+  padding:
+    0.45rem
+    1rem;
+
+  border:
+    1px solid
+    rgba(34, 211, 238, 0.35);
+
+  border-radius: 999px;
+
+  background:
+    rgba(6, 182, 212, 0.06);
+
+  color: #67e8f9;
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #22d3ee;
+
+  box-shadow:
+    0 0 12px
+    #22d3ee;
+}
+
+.hero-infinity-symbol {
+  position: absolute;
+
+  top: -45px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 17rem;
+
+  line-height: 1;
+
+  color:
+    rgba(59, 130, 246, 0.025);
+
+  font-weight: 900;
+
+  pointer-events: none;
+}
+
+.hero-script {
+  position: relative;
+
+  margin-top: 0.8rem;
+  margin-bottom: -0.3rem;
+
+  font-family:
+    "Brush Script MT",
+    "Segoe Script",
+    cursive;
+
+  font-size:
+    clamp(
+      2.8rem,
+      6vw,
+      5rem
+    );
+
+  color: #22d3ee;
+
+  text-shadow:
+    0 0 25px
+    rgba(34, 211, 238, 0.35);
+}
+
+.achievements-hero h1 {
+  position: relative;
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      3rem,
+      7vw,
+      6rem
+    );
+
+  font-weight: 900;
+
+  letter-spacing: -0.06em;
+
+  line-height: 0.95;
+
+  background:
+    linear-gradient(
+      100deg,
+      #e0f2fe,
+      #60a5fa 48%,
+      #a78bfa
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.hero-description {
+  max-width: 650px;
+
+  margin:
+    1.5rem
+    auto
+    0;
+
+  color: #94a3b8;
+
+  font-size: 0.98rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HERO POINTS
+========================================================= */
+
+.achievement-hero-points {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+
+  margin-top: 1.1rem;
+
+  color: #64748b;
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.achievement-hero-points span {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.achievement-hero-points span:hover {
+  color: #67e8f9;
+
+  transform: translateY(-2px);
+}
+
+.achievement-hero-points i {
+  color: #22d3ee;
+
+  font-style: normal;
+
+  font-size: 0.6rem;
+
+  text-shadow:
+    0 0 10px
+    rgba(34, 211, 238, 0.7);
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.hero-decoration {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.7rem;
+
+  margin-top: 1rem;
+}
+
+.hero-decoration span {
+  width: 65px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(34, 211, 238, 0.7)
+    );
+}
+
+.hero-decoration span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(139, 92, 246, 0.7),
+      transparent
+    );
+}
+
+.hero-diamond {
+  color: #22d3ee;
+
+  text-shadow:
+    0 0 12px
+    #22d3ee;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT FILTER
+========================================================= */
+
+.achievement-filter-section {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 1.5rem;
+
+  z-index: 30;
+}
+
+.achievement-filter-section
+.achievement-filter-container {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.achievement-filter-section
+.achievement-filters {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.35rem;
+
+  padding: 0.4rem;
+
+  border:
+    1px solid
+    rgba(103, 232, 249, 0.16);
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(2, 15, 35, 0.78),
+      rgba(8, 30, 58, 0.62)
+    );
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    inset
+    0 1px 0
+    rgba(255, 255, 255, 0.05),
+
+    0 12px 40px
+    rgba(0, 0, 0, 0.25),
+
+    0 0 35px
+    rgba(6, 182, 212, 0.06);
+}
+
+
+/* =========================================================
+   FILTER BUTTON
+========================================================= */
+
+.achievement-filter-section
+.achievement-filter {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.55rem;
+
+  min-width: 105px;
+
+  padding:
+    0.68rem
+    1.1rem;
+
+  border: none;
+
+  border-radius: 999px;
+
+  outline: none;
+
+  background: transparent;
+
+  color:
+    rgba(186, 230, 253, 0.62);
+
+  font-family: inherit;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   FILTER SHIMMER
+========================================================= */
+
+.achievement-filter-section
+.achievement-filter::after {
+  content: "";
+
+  position: absolute;
+
+  top: -120%;
+  left: -80%;
+
+  width: 40%;
+  height: 340%;
+
+  transform: rotate(25deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+
+  opacity: 0;
+
+  transition:
+    left 0.65s ease,
+    opacity 0.3s ease;
+}
+
+.achievement-filter-section
+.achievement-filter:hover::after {
+  left: 140%;
+  opacity: 1;
+}
+
+
+/* =========================================================
+   FILTER ICON
+========================================================= */
+
+.achievement-filter-section
+.achievement-filter svg {
+  position: relative;
+
+  z-index: 2;
+
+  color:
+    rgba(103, 232, 249, 0.55);
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* =========================================================
+   FILTER LABEL
+========================================================= */
+
+.achievement-filter-section
+.achievement-filter span {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ACTIVE DOT
+========================================================= */
+
+.achievement-filter-section
+.filter-active-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #67e8f9;
+
+  box-shadow:
+    0 0 7px
+    rgba(34, 211, 238, 1),
+
+    0 0 15px
+    rgba(34, 211, 238, 0.65);
+
+  opacity: 0;
+
+  transform: scale(0.2);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* =========================================================
+   FILTER HOVER
+========================================================= */
+
+.achievement-filter-section
+.achievement-filter:hover {
+  color: #cffafe;
+
+  transform:
+    translateY(-2px);
+}
+
+.achievement-filter-section
+.achievement-filter:hover svg {
+  color: #67e8f9;
+
+  transform:
+    scale(1.12)
+    rotate(-4deg);
+}
+
+
+/* =========================================================
+   ACTIVE FILTER
+========================================================= */
+
+.achievement-filter-section
+.achievement-filter.active {
+  color: #ecfeff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(6, 182, 212, 0.22),
+      rgba(59, 130, 246, 0.18),
+      rgba(139, 92, 246, 0.12)
+    );
+
+  box-shadow:
+    inset
+    0 0 18px
+    rgba(34, 211, 238, 0.07),
+
+    0 0 22px
+    rgba(34, 211, 238, 0.1);
+}
+
+.achievement-filter-section
+.achievement-filter.active svg {
+  color: #67e8f9;
+
+  transform: scale(1.1);
+}
+
+.achievement-filter-section
+.achievement-filter.active
+.filter-active-dot {
+  opacity: 1;
+
+  transform: scale(1);
+
+  animation:
+    filterDotPulse
+    2s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   ACTIVE UNDERLINE
+========================================================= */
+
+.achievement-filter-section
+.achievement-filter.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 20%;
+  right: 20%;
+
+  bottom: 2px;
+
+  height: 2px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #22d3ee,
+      #8b5cf6,
+      transparent
+    );
+
+  box-shadow:
+    0 0 8px
+    rgba(34, 211, 238, 0.75);
+}
+
+
+/* =========================================================
+   FILTER DOT ANIMATION
+========================================================= */
+
+@keyframes filterDotPulse {
+  0%,
+  100% {
+    transform: scale(0.85);
+
+    box-shadow:
+      0 0 5px
+      rgba(34, 211, 238, 0.7),
+
+      0 0 10px
+      rgba(34, 211, 238, 0.4);
+  }
+
+  50% {
+    transform: scale(1.2);
+
+    box-shadow:
+      0 0 8px
+      rgba(34, 211, 238, 1),
+
+      0 0 18px
+      rgba(34, 211, 238, 0.8);
+  }
+}
+
+
+/* =========================================================
+   ACHIEVEMENT JOURNEY
+========================================================= */
+
+.achievement-journey {
+  position: relative;
+
+  margin-top: 2rem;
+
+  padding:
+    2rem 0
+    3rem;
+}
+
+
+/* =========================================================
+   TIMELINE CONTAINER
+========================================================= */
+
+.achievement-timeline {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 1100px;
+}
+
+
+/* =========================================================
+   DESKTOP CONNECTING LINE
+
+   IMPORTANT:
+   This is ONE solid SVG path.
+   No dotted/dashed stroke.
+
+   The path ends exactly at Achievement 3.
+========================================================= */
+
+/* =========================================================
+   ACHIEVEMENT ENERGY CURRENT
+   Ocean / Infinity inspired connector
+========================================================= */
+
+/* =========================================================
+   OCEAN ENERGY CURRENT
+   Curved flowing connector between achievements
+========================================================= */
+
+.timeline-svg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  overflow: visible;
+}
+
+.timeline-svg svg {
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   BASE PATH
+========================================================= */
+
+.timeline-svg path {
+  fill: none;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   DEEP OCEAN GLOW
+========================================================= */
+
+.timeline-glow {
+  stroke-width: 30;
+
+  opacity: 0.10;
+
+  filter: blur(14px);
+
+  animation:
+    oceanGlowPulse
+    4s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   SECONDARY CURRENT GLOW
+========================================================= */
+
+.timeline-main {
+  stroke-width: 5;
+
+  opacity: 0.9;
+
+  filter:
+    drop-shadow(0 0 4px rgba(34, 211, 238, 0.9))
+    drop-shadow(0 0 12px rgba(59, 130, 246, 0.6))
+    drop-shadow(0 0 25px rgba(139, 92, 246, 0.25));
+
+  stroke-dasharray: 45 16;
+
+  animation:
+    oceanCurrentFlow
+    2.8s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   INNER ENERGY STREAM
+========================================================= */
+
+.timeline-inner {
+  stroke-width: 1.8;
+
+  opacity: 0.95;
+
+  filter:
+    drop-shadow(0 0 5px rgba(103, 232, 249, 0.9));
+
+  stroke-dasharray: 3 12;
+
+  animation:
+    oceanInnerFlow
+    1.5s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   GLOW BREATHING
+========================================================= */
+
+@keyframes oceanGlowPulse {
+
+  0%,
+  100% {
+    opacity: 0.07;
+
+    filter: blur(16px);
+  }
+
+  50% {
+    opacity: 0.20;
+
+    filter: blur(9px);
+  }
+}
+
+
+/* =========================================================
+   MAIN CURRENT MOVEMENT
+========================================================= */
+
+@keyframes oceanCurrentFlow {
+
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -122;
+  }
+}
+
+
+/* =========================================================
+   INNER ENERGY MOVEMENT
+========================================================= */
+
+@keyframes oceanInnerFlow {
+
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -60;
+  }
+}
+/* =========================================================
+   TIMELINE HIDDEN
+   IMPORTANT:
+   No line when there is only one achievement
+========================================================= */
+
+.timeline-hidden {
+  display: none !important;
+}
+
+@keyframes timelinePulse {
+  0%,
+  100% {
+    opacity: 0.5;
+
+    filter:
+      drop-shadow(
+        0 0 4px
+        rgba(34, 211, 238, 0.4)
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    filter:
+      drop-shadow(
+        0 0 12px
+        rgba(34, 211, 238, 0.9)
+      );
+  }
+}
+
+
+/* =========================================================
+   ACHIEVEMENT ITEMS
+========================================================= */
+
+.achievement-items {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 1050px;
+}
+
+
+/* =========================================================
+   EACH ACHIEVEMENT
+========================================================= */
+
+.achievement-item {
+  position: absolute;
+
+  width:
+    min(
+      430px,
+      42%
+    );
+
+  animation:
+    achievementFloat
+    7s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT 1
+========================================================= */
+
+.achievement-item-1 {
+  left: 3%;
+  top: 20px;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT 2
+========================================================= */
+
+.achievement-item-2 {
+  right: 3%;
+  top: 390px;
+
+  animation-delay: -2.2s;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT 3
+========================================================= */
+
+.achievement-item-3 {
+  left: 8%;
+  top: 760px;
+
+  animation-delay: -4.4s;
+}
+
+
+/* =========================================================
+   CARD FLOAT
+========================================================= */
+
+@keyframes achievementFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-8px);
+  }
+}
+
+
+/* =========================================================
+   TIMELINE NODES
+========================================================= */
+
+.achievement-node {
+  position: absolute;
+
+  z-index: 10;
+
+  width: 58px;
+  height: 58px;
+
+  left: -20px;
+  top: -20px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    2px solid
+    #22d3ee;
+
+  border-radius: 50%;
+
+  background:
+    #041225;
+
+  box-shadow:
+    0 0 0 7px
+    rgba(6, 182, 212, 0.04),
+
+    0 0 28px
+    rgba(6, 182, 212, 0.45);
+
+  animation:
+    nodePulse
+    2.5s
+    ease-in-out
+    infinite;
+}
+
+.achievement-item-2
+.achievement-node {
+  border-color:
+    #8b5cf6;
+
+  box-shadow:
+    0 0 0 7px
+    rgba(139, 92, 246, 0.04),
+
+    0 0 28px
+    rgba(139, 92, 246, 0.45);
+}
+
+.achievement-node span {
+  color:
+    #e0f2fe;
+
+  font-size:
+    0.85rem;
+
+  font-weight:
+    800;
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    transform:
+      scale(1);
+  }
+
+  50% {
+    transform:
+      scale(1.08);
+  }
+}
+
+
+/* =========================================================
+   ACHIEVEMENT CARD
+========================================================= */
+
+.achievement-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 0 !important;
+
+  border-radius: 22px;
+
+  border:
+    1px solid
+    rgba(34, 211, 238, 0.3);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 25, 52, 0.94),
+      rgba(3, 12, 29, 0.96)
+    );
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.45),
+
+    0 0 30px
+    rgba(6, 182, 212, 0.07);
+
+  backdrop-filter:
+    blur(18px);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.achievement-card:hover {
+  transform:
+    translateY(-10px)
+    scale(1.015);
+
+  border-color:
+    rgba(34, 211, 238, 0.75);
+
+  box-shadow:
+    0 25px 70px
+    rgba(0, 0, 0, 0.55),
+
+    0 0 45px
+    rgba(6, 182, 212, 0.16);
+}
+
+.achievement-card-member {
+  border-color:
+    rgba(139, 92, 246, 0.35);
+}
+
+.achievement-card-member:hover {
+  border-color:
+    rgba(167, 139, 250, 0.75);
+
+  box-shadow:
+    0 25px 70px
+    rgba(0, 0, 0, 0.55),
+
+    0 0 45px
+    rgba(139, 92, 246, 0.18);
+}
+
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.achievement-card-image {
+  position: relative;
+
+  height: 205px;
+
+  overflow: hidden;
+}
+
+.achievement-card-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s ease;
+}
+
+.achievement-card:hover
+.achievement-card-image img {
+  transform:
+    scale(1.08);
+}
+
+.achievement-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 8, 23, 0.05),
+      rgba(2, 8, 23, 0.82)
+    );
+}
+
+.achievement-card-badge {
+  position: absolute;
+
+  top: 0.8rem;
+  left: 0.8rem;
+
+  z-index: 3;
+}
+
+.achievement-sparkle {
+  position: absolute;
+
+  right: 1rem;
+  bottom: 1rem;
+
+  z-index: 3;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.2);
+
+  border-radius: 50%;
+
+  background:
+    rgba(2, 8, 23, 0.45);
+
+  color:
+    #67e8f9;
+
+  backdrop-filter:
+    blur(10px);
+
+  animation:
+    sparklePulse
+    2s
+    ease-in-out
+    infinite;
+}
+
+@keyframes sparklePulse {
+  0%,
+  100% {
+    transform:
+      rotate(0deg)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      rotate(12deg)
+      scale(1.12);
+  }
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.achievement-card-content {
+  padding:
+    1.3rem
+    1.4rem
+    1.35rem;
+}
+
+.achievement-card-topline {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-bottom: 0.7rem;
+
+  color: #38bdf8;
+
+  font-size: 0.63rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.achievement-card-year {
+  color: #64748b;
+
+  letter-spacing: 0;
+}
+
+.achievement-card-content h3 {
+  margin:
+    0 0 0.65rem;
+
+  color: #f8fafc;
+
+  font-size: 1.25rem;
+
+  line-height: 1.3;
+}
+
+.achievement-card-content p {
+  margin:
+    0 0 1.15rem;
+
+  color: #94a3b8;
+
+  font-size: 0.88rem;
+
+  line-height: 1.65;
+}
+
+.achievement-card-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+
+  padding-top: 0.9rem;
+
+  border-top:
+    1px solid
+    rgba(148, 163, 184, 0.1);
+}
+
+.achievement-meta-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.55rem;
+
+  color: #64748b;
+
+  font-size: 0.75rem;
+}
+
+.achievement-meta-item svg {
+  color: #22d3ee;
+}
+
+.achievement-card-member
+.achievement-meta-item svg {
+  color: #a78bfa;
+}
+
+
+/* =========================================================
+   CARD BOTTOM GLOW
+========================================================= */
+
+.achievement-card-glow {
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: -70px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(6, 182, 212, 0.16);
+
+  filter:
+    blur(35px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.achievement-empty {
+  padding:
+    5rem 0;
+}
+
+
+/* =========================================================
+   ENDING
+========================================================= */
+
+.achievement-ending {
+  position: relative;
+
+  text-align: center;
+
+  padding:
+    1rem 0 2rem;
+}
+
+.ending-symbol {
+  color:
+    #22d3ee;
+
+  font-size:
+    3.5rem;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 0 30px
+    rgba(34, 211, 238, 0.45);
+
+  animation:
+    endingPulse
+    3s
+    ease-in-out
+    infinite;
+}
+
+.achievement-ending p {
+  margin:
+    0.6rem 0 0;
+
+  color:
+    #38bdf8;
+
+  font-size:
+    0.9rem;
+
+  letter-spacing:
+    0.03em;
+}
+
+.ending-decoration {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  margin-top: 0.8rem;
+}
+
+.ending-decoration span {
+  width: 55px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(34, 211, 238, 0.6)
+    );
+}
+
+.ending-decoration span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(139, 92, 246, 0.6),
+      transparent
+    );
+}
+
+.ending-decoration b {
+  color:
+    #22d3ee;
+}
+
+@keyframes endingPulse {
+  0%,
+  100% {
+    transform:
+      scale(1);
+  }
+
+  50% {
+    transform:
+      scale(1.1);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .achievement-timeline {
+    min-height: auto;
+  }
+
+  .achievement-items {
+    min-height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    padding:
+      2rem 0;
+  }
+
+  .achievement-item {
+    position: relative;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+
+    width:
+      min(
+        520px,
+        92%
+      );
+
+    margin:
+      0 auto;
+  }
+
+
+  /* =======================================================
+     MOBILE/TABLET CONNECTOR
+  ======================================================= */
+
+  .achievement-mobile-connector {
+    position: relative;
+
+    width: 100%;
+
+    height: 4rem;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+  }
+
+  .achievement-mobile-connector span {
+    position: relative;
+
+    display: block;
+
+    width: 2px;
+
+    height: 100%;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(34, 211, 238, 0),
+        rgba(34, 211, 238, 0.8),
+        rgba(139, 92, 246, 0.8),
+        rgba(139, 92, 246, 0)
+      );
+
+    box-shadow:
+      0 0 10px
+      rgba(34, 211, 238, 0.45);
+  }
+
+
+  /* Moving glowing particle */
+
+  .achievement-mobile-connector span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 7px;
+    height: 7px;
+
+    transform:
+      translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+      #67e8f9;
+
+    box-shadow:
+      0 0 8px
+      #22d3ee,
+
+      0 0 18px
+      #22d3ee;
+
+    animation:
+      connectorParticle
+      2.2s
+      ease-in-out
+      infinite;
+  }
+
+  @keyframes connectorParticle {
+
+    0% {
+      top: 0;
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 1;
+    }
+
+    80% {
+      opacity: 1;
+    }
+
+    100% {
+      top:
+        calc(100% - 7px);
+
+      opacity: 0;
+    }
+  }
+
+
+  /* Hide desktop SVG */
+
+  .timeline-svg {
+    display: none;
+  }
+
+
+  /* Hero points */
+
+  .achievement-hero-points {
+    gap: 0.5rem;
+
+    font-size: 0.58rem;
+
+    line-height: 1.8;
+  }
+
+  .achievement-hero-points i {
+    font-size: 0.45rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .achievements-content {
+    width:
+      calc(
+        100% - 24px
+      );
+
+    padding-top:
+      2rem;
+  }
+
+  .hero-infinity-symbol {
+    font-size:
+      10rem;
+
+    top:
+      -15px;
+  }
+
+  .achievements-hero h1 {
+    font-size:
+      clamp(
+        2.6rem,
+        13vw,
+        4rem
+      );
+  }
+
+  .hero-script {
+    font-size:
+      3rem;
+  }
+
+  .hero-description {
+    font-size:
+      0.86rem;
+  }
+
+
+  /* Mobile filters */
+
+  .achievement-filter-section
+  .achievement-filters {
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .achievement-filter-section
+  .achievement-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .achievement-filter-section
+  .achievement-filter {
+    white-space: nowrap;
+
+    padding:
+      0.55rem
+      0.85rem;
+
+    font-size:
+      0.72rem;
+  }
+
+
+  /* Cards */
+
+  .achievement-item {
+    width: 100%;
+  }
+
+
+  /* Nodes */
+
+  .achievement-node {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 58px;
+    height: 58px;
+
+    left: -18px;
+    top: -18px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+      2px solid
+      #22d3ee;
+
+    border-radius: 50%;
+
+    background:
+      #041225;
+
+    box-shadow:
+      0 0 0 7px
+      rgba(6, 182, 212, 0.04),
+
+      0 0 28px
+      rgba(6, 182, 212, 0.45);
+
+    animation:
+      nodePulse
+      2.5s
+      ease-in-out
+      infinite;
+  }
+
+
+  /* Card image */
+
+  .achievement-card-image {
+    height:
+      180px;
+  }
+
+
+  /* Background decorations */
+
+  .starfish-left {
+    left:
+      -25px;
+  }
+
+  .starfish-right {
+    right:
+      -25px;
+  }
+
+  .jellyfish-left {
+    left:
+      -25px;
+  }
+
+  .jellyfish-right {
+    right:
+      -25px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .achievement-background *,
+  .achievement-card *,
+  .achievement-item,
+  .timeline-main,
+  .achievement-node,
+  .ending-symbol {
+    animation:
+      none !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL TIMELINE SAFETY
+========================================================= */
+
+/*
+   The SVG path in AchievementsPage ends at the third
+   achievement node.
+
+   IMPORTANT:
+   Do NOT add stroke-dasharray here.
+   That would turn the connector into a dotted line.
+*/
+
+/* =========================================================
+   OCEAN CURRENT PARTICLE
+========================================================= */
+
+.timeline-svg {
+  filter: drop-shadow(
+    0 0 12px
+    rgba(34, 211, 238, 0.08)
+  );
+}
+
+
+/* =========================================================
+   CURRENT BUBBLES
+========================================================= */
+
+.timeline-svg::before,
+.timeline-svg::after {
+  content: "";
+
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(125, 211, 252, 0.7);
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255,255,255,0.7),
+      rgba(34,211,238,0.08)
+    );
+
+  box-shadow:
+    0 0 8px
+    rgba(34, 211, 238, 0.7),
+
+    0 0 18px
+    rgba(34, 211, 238, 0.3);
+
+  animation:
+    currentBubble
+    4s
+    ease-in-out
+    infinite;
+}
+
+.timeline-svg::before {
+  left: 31%;
+  top: 20%;
+}
+
+.timeline-svg::after {
+  left: 67%;
+  top: 49%;
+
+  width: 5px;
+  height: 5px;
+
+  animation-delay: -2s;
+}
+
+
+@keyframes currentBubble {
+
+  0% {
+    transform:
+      translateY(10px)
+      scale(0.6);
+
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.8;
+  }
+
+  70% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform:
+      translateY(-30px)
+      translateX(12px)
+      scale(1.1);
+
+    opacity: 0;
+  }
+}
