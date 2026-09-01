@@ -18,9 +18,9 @@ export const clubInfo = {
     location: "Department of CSE, FTE, MSU Baroda"
   },
   socials: {
-    github: "https://github.com/devinfinity-msu",
-    linkedin: "https://www.linkedin.com/company/devinfinity-cse/posts/?feedView=all",
-    instagram: "https://instagram.com/devinfinity_msu",
+    github: "https://github.com/devinfinity-msu/Dev-Web",
+    linkedin: "https://www.linkedin.com/company/devinfinity-cse/",
+    instagram: "https://www.instagram.com/dev_infinity.official?igsi=dzF3dDBmcHphY3E0",
     discord: "https://discord.gg/devinfinity"
   }
 };
