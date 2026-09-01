@@ -1,0 +1,629 @@
+:root {
+    /* "Neon Dusk" palette — curated, cohesive cool-tone spread with a warm amber pop */
+    --navy-deep: #05061a;
+    --navy: #0a0d2e;
+    --indigo: #6366f1;
+    --violet: #8b5cf6;
+    --magenta: #d946ef;
+    --cyan: #22d3ee;
+    --gold: #f6b93b;
+    --ink: #f5f3ff;
+    --slate: #9195c9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(circle at 18% 18%, rgba(21, 154, 63, 0.32), transparent 55%),
+        radial-gradient(circle at 85% 12%, rgba(34, 211, 238, 0.22), transparent 50%),
+        radial-gradient(circle at 82% 88%, rgba(217, 70, 239, 0.24), transparent 55%),
+        radial-gradient(circle at 12% 88%, rgba(99, 102, 241, 0.22), transparent 50%),
+        radial-gradient(circle at 50% 30%, #14173f 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(0, 174, 255, 0.18),
+            transparent 35%),
+        radial-gradient(circle at 20% 80%,
+            rgba(126, 34, 206, 0.15),
+            transparent 30%),
+        #030712;
+
+    animation: backgroundMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+
+    0% {
+        filter: hue-rotate(0deg);
+        transform: scale(1);
+    }
+
+    100% {
+        filter: hue-rotate(35deg);
+        transform: scale(1.08);
+    }
+}
+
+/* faint circuit-node backdrop */
+.field {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(139, 92, 246, 0.20) 1px, transparent 1.4px);
+    background-size: 38px 38px;
+    animation: driftField 40s linear infinite;
+    opacity: 0.55;
+}
+
+@keyframes driftField {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -380px -380px;
+    }
+}
+
+/* ---------- ambient floating orbs ---------- */
+.ambient-orbs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.32;
+}
+
+.orb-1 {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle at 35% 35%, var(--violet), var(--indigo));
+    top: 12%;
+    left: 12%;
+    animation: driftOrb1 16s ease-in-out infinite;
+}
+
+.orb-2 {
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle at 35% 35%, var(--cyan), var(--indigo));
+    bottom: 10%;
+    right: 10%;
+    animation: driftOrb2 19s ease-in-out infinite;
+}
+
+.orb-3 {
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle at 35% 35%, var(--magenta), var(--gold));
+    top: 55%;
+    left: 65%;
+    animation: driftOrb3 14s ease-in-out infinite;
+}
+
+@keyframes driftOrb1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(60px, 40px);
+    }
+}
+
+@keyframes driftOrb2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-50px, -45px);
+    }
+}
+
+@keyframes driftOrb3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-40px, 35px);
+    }
+}
+
+/* ================= LIQUID DROP INTRO ================= */
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* ---- the realistic falling teardrop (SVG) ---- */
+.drop-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 34px;
+    height: 46px;
+    margin: -170px 0 0 -17px;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.4));
+    transform-origin: 50% 15%;
+    will-change: transform, opacity;
+    animation:
+        dropFall 0.48s cubic-bezier(0.55, 0, 1, 0.45) forwards,
+        dropVanish 0.16s ease-in forwards 0.46s;
+}
+
+
+
+
+
+@keyframes dropFall {
+    0% {
+        transform: translateY(-42vh) scaleY(0.9) scaleX(1);
+    }
+
+    55% {
+        transform: translateY(-2vh) scaleY(1.22) scaleX(0.92);
+    }
+
+    80% {
+        transform: translateY(0) scaleY(1.4) scaleX(0.82);
+    }
+
+    100% {
+        transform: translateY(3px) scaleY(0.62) scaleX(1.3);
+    }
+}
+
+@keyframes dropVanish {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ---- quick bright flash the instant it lands ---- */
+.impact-flash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, var(--cyan) 40%, transparent 72%);
+    opacity: 0;
+    animation: flashPop 0.35s ease-out forwards 0.44s;
+}
+
+@keyframes flashPop {
+    0% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+
+    35% {
+        transform: scale(1.4);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+/* ---- the splash that bursts out and covers the screen ---- */
+.splash-blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, var(--cyan) 0%, var(--violet) 40%, var(--magenta) 68%, var(--indigo) 92%);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    transform: scale(0);
+    will-change: transform, border-radius, opacity;
+    animation:
+        splashGrow 0.85s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.48s,
+        splashFade 0.5s ease-in forwards 1.15s;
+}
+
+@keyframes splashGrow {
+    0% {
+        transform: scale(0) rotate(0deg);
+        border-radius: 50%;
+    }
+
+    35% {
+        transform: scale(30) rotate(6deg);
+        border-radius: 42% 58% 63% 37% / 55% 42% 58% 45%;
+    }
+
+    70% {
+        transform: scale(70) rotate(-4deg);
+        border-radius: 48% 52% 45% 55% / 40% 55% 45% 60%;
+    }
+
+    100% {
+        transform: scale(160) rotate(0deg);
+        border-radius: 46% 54% 50% 50% / 50% 46% 54% 50%;
+    }
+}
+
+@keyframes splashFade {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* impact ripple rings, born where the drop lands */
+.ripple-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border-radius: 50%;
+    border: 2px solid var(--cyan);
+    opacity: 0;
+    animation: rippleOut 0.9s ease-out forwards;
+}
+
+.ripple-ring.r2 {
+    border-color: var(--gold);
+    animation-delay: 0.55s;
+}
+
+.ripple-ring.r3 {
+    border-color: var(--magenta);
+    animation-delay: 0.68s;
+}
+
+.ripple-ring.r1 {
+    animation-delay: 0.5s;
+}
+
+@keyframes rippleOut {
+    0% {
+        transform: scale(0);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: scale(26);
+        opacity: 0;
+    }
+}
+
+/* ================= STAGE REVEAL ================= */
+.stage {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    max-width: 960px;
+    width: 100%;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: stageReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.2s;
+}
+
+@keyframes stageReveal {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ---------- logo ---------- */
+.logo-wrap {
+    position: relative;
+    width: clamp(190px, 25vmin, 340px);
+    height: clamp(190px, 25vmin, 340px);
+    margin-bottom: clamp(28px, 4.5vh, 48px);
+}
+
+.sonar {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--violet);
+    opacity: 0;
+    animation: sonarPulse 3.6s ease-out infinite;
+}
+
+.sonar.s2 {
+    border-color: var(--gold);
+    animation-delay: 1.2s;
+}
+
+.sonar.s3 {
+    border-color: var(--cyan);
+    animation-delay: 2.4s;
+}
+
+@keyframes sonarPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.55);
+        opacity: 0;
+    }
+}
+
+.logo-glow {
+    position: absolute;
+    inset: -18%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--violet), var(--cyan), var(--indigo), var(--gold), var(--magenta), var(--violet));
+    filter: blur(26px);
+    opacity: 0.35;
+    animation: spinGlow 6s linear infinite, breathe 3.2s ease-in-out infinite;
+}
+
+@keyframes spinGlow {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: scale(0.94);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(1.04);
+    }
+}
+
+.logo-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px rgba(238, 240, 251, 0.08), 0 18px 50px rgba(0, 0, 0, 0.55);
+    animation: floatLogo 3.6s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* ---------- wordmark ---------- */
+.wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(42px, 8vw, 108px);
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.wordmark .dev {
+    color: var(--ink);
+}
+
+.wordmark .infinity {
+    background: linear-gradient(90deg, var(--violet), var(--cyan) 25%, var(--indigo) 45%, var(--gold) 65%, var(--magenta) 85%, var(--violet));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: flowText 6s linear infinite;
+}
+
+@keyframes flowText {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+.tagline {
+    margin-top: clamp(16px, 2.4vh, 26px);
+    font-size: clamp(22px, 3vw, 40px);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--slate);
+    height: 1.4em;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+}
+
+.tagline.typing {
+    border-right-color: var(--violet);
+    animation: caret 0.75s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-right-color: transparent;
+    }
+}
+
+/* ---------- infinity loader ---------- */
+.loop-wrap {
+    margin-top: clamp(36px, 5.5vh, 68px);
+    width: clamp(270px, 31vw, 520px);
+    max-width: 85vw;
+}
+
+svg.loop {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.track {
+    fill: none;
+    stroke: rgba(238, 240, 251, 0.09);
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.progress {
+    fill: none;
+    stroke: url(#loopGradient);
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.comet {
+    filter: drop-shadow(0 0 6px var(--violet)) drop-shadow(0 0 14px var(--magenta));
+}
+
+/* recolor the loader's SVG gradient stops (defined in HTML) purely via CSS */
+#loopGradient stop:nth-child(1) {
+    stop-color: var(--violet);
+}
+
+#loopGradient stop:nth-child(2) {
+    stop-color: var(--cyan);
+}
+
+#loopGradient stop:nth-child(3) {
+    stop-color: var(--magenta);
+}
+
+/* recolor the drop's own gradient stops (defined in HTML) purely via CSS */
+#dropGradient stop:nth-child(1) {
+    stop-color: var(--cyan);
+}
+
+#dropGradient stop:nth-child(2) {
+    stop-color: var(--violet);
+}
+
+#dropGradient stop:nth-child(3) {
+    stop-color: var(--indigo);
+}
+
+.status-row {
+    margin-top: clamp(18px, 3.2vh, 30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(9px, 1.1vw, 17px);
+    font-size: clamp(13px, 1.25vw, 19px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+}
+
+.status-row .pct {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(14px, 1.35vw, 20px);
+    color: var(--cyan);
+    min-width: 52px;
+    text-align: left;
+}
+
+.status-row .msg {
+    transition: opacity 0.3s ease;
+}
+
+/* ---------- completion sparkle burst ---------- */
+.spark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px 2px currentColor;
+    opacity: 1;
+    pointer-events: none;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.3, 1), opacity 0.7s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+@media (max-width:420px) {
+    .stage {
+        padding: 16px;
+    }
+}
