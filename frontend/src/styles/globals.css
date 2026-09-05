@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @import './variables.css';
 
 /* Global Reset & Base Setup */
@@ -26,6 +27,13 @@ html {
 
 body {
   background-color: var(--bg-dark);
+  background-image: 
+    linear-gradient(rgba(11, 15, 25, 0.35), rgba(11, 15, 25, 0.45)),
+    url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-family);
   line-height: 1.6;
@@ -127,12 +135,9 @@ p {
   }
 }
 
-/* Background Grid Pattern */
+/* Background Grid Pattern - Removed grid lines for clean wallpaper look */
 .bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: none !important;
 }
 
 /* Utility Gradient Text */

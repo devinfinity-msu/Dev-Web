@@ -5,7 +5,7 @@ import { AdminHeader } from './AdminHeader';
 
 export const AdminLayout = () => {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--bg-dark)' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'transparent' }}>
       <AdminSidebar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         <AdminHeader />

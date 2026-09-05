@@ -1,0 +1,97 @@
+/* Floating Navbar Pill & Navigation5 CSS System */
+
+/* Container fixed to top of viewport */
+.floating-navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Floating Navbar Pill */
+.floating-navbar-pill {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: row;
+  height: 4rem;
+  width: 100%;
+  max-width: 72rem; /* 1152px */
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(11, 15, 25, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(59, 130, 246, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive visibility */
+@media (max-width: 1023px) {
+  .hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:hidden {
+    display: none !important;
+  }
+  .lg\:block {
+    display: block !important;
+  }
+}
+
+/* Flex utilities for base-ui navigation elements */
+[data-slot="navigation-menu-viewport"] {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  border-radius: 2rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background-color: #0b0f19 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(59, 130, 246, 0.2) !important;
+  overflow: hidden;
+}
+
+/* Navigation List Items */
+.floating-navbar-pill a,
+.floating-navbar-pill button {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.floating-navbar-pill a:hover,
+.floating-navbar-pill button:hover {
+  color: #ffffff;
+}
+
+/* Active Nav link highlighting */
+.nav-link-active {
+  color: #3b82f6 !important;
+  background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Dropdown Grid */
+.grid-cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.divide-x > * + * {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
