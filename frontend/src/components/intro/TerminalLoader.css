@@ -1,0 +1,307 @@
+/* ============================================================
+   FUTURISTIC HOLOGRAPHIC HUD - TERMINAL LOADER
+   ============================================================ */
+
+.hud-terminal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: radial-gradient(circle at center, #070e24 0%, #030612 70%, #010207 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Background Cyber Grid & Beams */
+.hud-term-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.hud-term-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(6, 182, 212, 0.02) 2px,
+    rgba(6, 182, 212, 0.02) 4px
+  );
+  pointer-events: none;
+  animation: termScanMove 12s linear infinite;
+}
+
+@keyframes termScanMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100px); }
+}
+
+/* Terminal Cyber Container */
+.hud-term-container {
+  width: 100%;
+  max-width: 900px;
+  height: 68vh;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  background: rgba(9, 16, 35, 0.85);
+  backdrop-filter: blur(24px);
+  box-shadow: 
+    0 0 50px rgba(6, 182, 212, 0.15),
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(6, 182, 212, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+/* Corner Accents */
+.hud-term-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #06b6d4, #3b82f6, transparent);
+}
+
+/* Terminal Header */
+.hud-term-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.hud-term-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hud-term-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.hud-term-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #38bdf8;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.hud-term-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.6875rem;
+}
+
+/* Terminal Body Layout (Logs on left, HUD widgets on right) */
+.hud-term-body {
+  flex: 1;
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+/* Log stream */
+.hud-term-logs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  overflow: hidden;
+}
+
+.hud-term-line {
+  font-size: clamp(0.75rem, 1.4vw, 0.84rem);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  word-break: break-all;
+}
+
+.hud-badge-tag {
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.hud-badge-ok {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #34d399;
+}
+
+.hud-badge-info {
+  background: rgba(6, 182, 212, 0.18);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: #38bdf8;
+}
+
+.hud-badge-sync {
+  background: rgba(139, 92, 246, 0.18);
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  color: #c084fc;
+}
+
+.hud-badge-core {
+  background: rgba(59, 130, 246, 0.18);
+  border: 1px solid rgba(59, 130, 246, 0.5);
+  color: #60a5fa;
+}
+
+/* Terminal Side Widgets */
+.hud-term-widgets {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid rgba(6, 182, 212, 0.15);
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .hud-term-widgets {
+    display: none;
+  }
+}
+
+.hud-radar-mini {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+}
+
+.hud-radar-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(6, 182, 212, 0.4) 0deg, transparent 60deg, transparent 360deg);
+  animation: radarSweep 3s linear infinite;
+}
+
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hud-meter-box {
+  background: rgba(6, 182, 212, 0.05);
+  border: 1px solid rgba(6, 182, 212, 0.18);
+  border-radius: 6px;
+  padding: 0.6rem;
+}
+
+.hud-meter-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.3rem;
+}
+
+.hud-meter-fill {
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+}
+
+/* Terminal Footer Progress */
+.hud-term-footer {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.85rem;
+}
+
+.hud-term-bar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.45rem;
+}
+
+.hud-term-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hud-term-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #a855f7);
+  border-radius: 9999px;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.8);
+  transition: width 0.2s linear;
+}
+
+.hud-term-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.85rem;
+}
+
+.hud-term-skip {
+  background: transparent;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #38bdf8;
+  border-radius: 4px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.hud-term-skip:hover {
+  background: rgba(6, 182, 212, 0.15);
+  color: #ffffff;
+  border-color: #06b6d4;
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+}

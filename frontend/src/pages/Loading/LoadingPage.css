@@ -1,68 +1,573 @@
-.loading-screen {
+/* ============================================================
+   FUTURISTIC HOLOGRAPHIC HUD - LOADING PAGE STYLES
+   ============================================================ */
+
+.hud-loading-screen {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background-color: var(--bg-dark);
+  background: radial-gradient(circle at 50% 50%, #0a1128 0%, #050814 60%, #02040a 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  justify-content: space-between;
+  padding: 1.5rem;
   overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Segoe UI', monospace;
+  color: #e2e8f0;
+  user-select: none;
 }
 
-.loading-logo-box {
-  width: 5rem;
-  height: 5rem;
-  border-radius: var(--radius-md);
-  background: var(--gradient-primary);
+/* ── Deep Cyber Grid & Ambient Overlays ── */
+.hud-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  perspective: 1000px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hud-grid-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, #02040a 85%);
+  pointer-events: none;
+}
+
+/* Holographic Vignette & Scanline Beam */
+.hud-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(6, 182, 212, 0.03) 50%,
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 100% 8px;
+  pointer-events: none;
+  z-index: 2;
+  animation: hudScanlines 10s linear infinite;
+}
+
+@keyframes hudScanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+.hud-beam-sweep {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 182, 212, 0) 0%,
+    rgba(6, 182, 212, 0.12) 50%,
+    rgba(59, 130, 246, 0.25) 95%,
+    rgba(6, 182, 212, 0.8) 100%
+  );
+  filter: blur(2px);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 3;
+  animation: hudBeamSweep 6s ease-in-out infinite;
+}
+
+@keyframes hudBeamSweep {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(600%); }
+  100% { transform: translateY(-100%); }
+}
+
+/* ── Corner Tactical HUD Brackets ── */
+.hud-corner-bracket {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 5;
+  border-color: rgba(6, 182, 212, 0.6);
+}
+
+.hud-corner-tl {
+  top: 1.5rem;
+  left: 1.5rem;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.hud-corner-tr {
+  top: 1.5rem;
+  right: 1.5rem;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.hud-corner-bl {
+  bottom: 1.5rem;
+  left: 1.5rem;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.hud-corner-br {
+  bottom: 1.5rem;
+  right: 1.5rem;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+/* ── Top System Header ── */
+.hud-header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(6, 182, 212, 0.18);
+  background: rgba(10, 17, 40, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: 8px;
+}
+
+.hud-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hud-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #06b6d4;
+  box-shadow: 0 0 10px #06b6d4, 0 0 20px #06b6d4;
+  animation: hudBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes hudBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.hud-header-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #06b6d4;
+  text-transform: uppercase;
+}
+
+.hud-header-sub {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.1em;
+}
+
+.hud-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.6875rem;
+  color: rgba(6, 182, 212, 0.8);
+  letter-spacing: 0.1em;
+}
+
+.hud-node-badge {
+  padding: 0.2rem 0.6rem;
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 4px;
+}
+
+/* ── Central Stage Container ── */
+.hud-center-stage {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  box-shadow: 0 0 40px var(--primary-glow);
-  margin-bottom: 1.5rem;
-  animation: pulseGlow 2s ease-in-out infinite;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 10;
+  flex: 1;
+  position: relative;
+  padding: 1rem 0;
 }
 
-.loading-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: var(--text-contrast);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
+/* ── Side Telemetry Panels ── */
+.hud-telemetry-side {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.loading-dept {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+@media (max-width: 900px) {
+  .hud-telemetry-side {
+    display: none;
+  }
 }
 
-.loading-tagline {
-  display: inline-block;
-  padding: 0.35rem 1rem;
-  border-radius: var(--radius-full);
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: var(--primary);
+.hud-telemetry-card {
+  background: rgba(8, 15, 33, 0.65);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  border-radius: 8px;
+  padding: 0.85rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hud-telemetry-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #06b6d4, #3b82f6);
+}
+
+.hud-telemetry-label {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.hud-telemetry-value {
   font-size: 0.875rem;
   font-weight: 700;
-  margin-bottom: 2.5rem;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-.loading-bar-container {
-  width: 260px;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
+/* Soundwave / Audio Equalizer in HUD */
+.hud-equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+  margin-top: 0.5rem;
+}
+
+.hud-eq-bar {
+  flex: 1;
+  background: linear-gradient(to top, rgba(6, 182, 212, 0.3), #06b6d4);
+  border-radius: 1px;
+  animation: hudEqPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes hudEqPulse {
+  0% { height: 15%; }
+  100% { height: 95%; }
+}
+
+/* ── Central Reactor & Reticle Core ── */
+.hud-reactor-wrapper {
+  position: relative;
+  width: 290px;
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG Reticle Rings */
+.hud-reticle-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hud-ring-outer {
+  transform-origin: center;
+  animation: hudRotateClockwise 28s linear infinite;
+}
+
+.hud-ring-middle {
+  transform-origin: center;
+  animation: hudRotateCounterClockwise 18s linear infinite;
+}
+
+.hud-ring-inner {
+  transform-origin: center;
+  animation: hudRotateClockwise 12s linear infinite;
+}
+
+@keyframes hudRotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes hudRotateCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Pulsing Core Sphere */
+.hud-core-sphere {
+  position: relative;
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 35px rgba(6, 182, 212, 0.45),
+    0 0 70px rgba(59, 130, 246, 0.25);
   overflow: hidden;
+  z-index: 6;
+}
+
+.hud-core-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.7));
+  animation: hudFloat 4s ease-in-out infinite;
+}
+
+@keyframes hudFloat {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.03) translateY(-3px); }
+}
+
+/* Hologram Scan Beam across logo */
+.hud-logo-scanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.9), rgba(59, 130, 246, 0));
+  box-shadow: 0 0 12px #06b6d4;
+  animation: hudScanLogo 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hudScanLogo {
+  0% { transform: translateY(-10px); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(155px); opacity: 0; }
+}
+
+/* ── Central Identity Section ── */
+.hud-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  margin-top: 0.5rem;
+}
+
+.hud-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 0 25px rgba(6, 182, 212, 0.55);
+}
+
+.hud-title-gradient {
+  background: linear-gradient(135deg, #ffffff 10%, #38bdf8 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.6));
+}
+
+.hud-dept-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  padding: 0.3rem 1rem;
+  background: rgba(14, 27, 54, 0.7);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #38bdf8;
+  backdrop-filter: blur(10px);
+}
+
+.hud-tagline {
+  margin-top: 0.6rem;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ── HUD Lower Control & Progress Deck ── */
+.hud-lower-deck {
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  margin-top: auto;
+  padding: 0.5rem 0;
+}
+
+/* Dynamic Phase Log Ticker */
+.hud-phase-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #38bdf8;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  min-height: 1.25rem;
+}
+
+/* Segmented Laser Progress Bar */
+.hud-progress-frame {
+  width: 100%;
+  background: rgba(8, 15, 33, 0.8);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.12), inset 0 0 15px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
   position: relative;
 }
 
-.loading-bar-fill {
+.hud-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.hud-progress-pct {
+  color: #06b6d4;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+}
+
+.hud-progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.hud-progress-fill {
   height: 100%;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 70%, #a855f7 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.9), 0 0 28px rgba(59, 130, 246, 0.6);
+  position: relative;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hud-progress-spark {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #06b6d4;
+}
+
+/* Micro Segments Grid Below Bar */
+.hud-segments-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.45rem;
+  gap: 2px;
+}
+
+.hud-segment-tick {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+}
+
+.hud-segment-tick.active {
+  background: #06b6d4;
+  box-shadow: 0 0 6px #06b6d4;
+}
+
+/* ── Tactical Action Controls ── */
+.hud-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.hud-bypass-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.6rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(59, 130, 246, 0.08));
+  border: 1px solid rgba(6, 182, 212, 0.45);
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.hud-bypass-btn:hover {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(59, 130, 246, 0.2));
+  border-color: #06b6d4;
+  color: #ffffff;
+  box-shadow: 0 0 35px rgba(6, 182, 212, 0.45), 0 0 10px rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.hud-bypass-btn:active {
+  transform: translateY(1px);
 }

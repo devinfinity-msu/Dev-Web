@@ -263,6 +263,7 @@ export const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef(null);
 
   const isActive = (path) =>
@@ -270,6 +271,12 @@ export const Navbar = () => {
 
   useEffect(() => setDropdownOpen(false), [location.pathname]);
   useEffect(() => setMobileOpen(false), [location.pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const mainLinks = [
     { label: 'Home', to: '/' },
@@ -296,7 +303,17 @@ export const Navbar = () => {
   return (
     <>
       <div style={S.wrapper}>
-        <div style={S.pill} ref={dropdownRef}>
+        <div
+          style={{
+            ...S.pill,
+            background: scrolled ? 'rgba(6, 9, 18, 0.92)' : 'rgba(11, 15, 25, 0.75)',
+            borderColor: scrolled ? 'rgba(59, 130, 246, 0.25)' : 'rgba(255, 255, 255, 0.1)',
+            boxShadow: scrolled
+              ? '0 12px 40px rgba(0,0,0,0.65), 0 0 25px rgba(59,130,246,0.18)'
+              : '0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(59,130,246,0.12)',
+          }}
+          ref={dropdownRef}
+        >
 
           {/* ── Logo ── */}
           <div style={S.logoArea}>

@@ -76,10 +76,6 @@ export const ProjectsPage = () => {
 
   return (
     <div className="projects-page">
-      <StarfieldBackground
-        mode={selectedProject ? 'project' : 'default'}
-        selectedProject={selectedProject}
-      />
       <Navbar />
 
       <main className="projects-content container">
