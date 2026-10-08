@@ -200,14 +200,7 @@ html {
   perspective: none !important;
   overflow-x: clip;
   isolation: isolate;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(3, 8, 22, 0.15) 0%,
-      rgba(4, 10, 27, 0.22) 55%,
-      rgba(3, 7, 18, 0.45) 100%
-    ),
-    url('../assets/new-project-bg.jpg') center / cover no-repeat;
+  background: transparent !important;
 }
 
 
